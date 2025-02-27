@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Одобренные заявки</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .request-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .request-image {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Главная</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Назад</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Одобренные заявки</h2>
+        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div th:each="request : ${requests}" class="card request-card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img th:if="${request.imageUrl}" th:src="@{'/uploads/' + ${request.imageUrl}}" 
+                                     class="request-image" alt="Изображение предмета">
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="card-title" th:text="${request.itemName}">Название предмета</h5>
+                                <p class="card-text" th:text="${request.description}">Описание</p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Ожидаемая стоимость: <span th:text="${request.expectedPrice}">Цена</span> ₽
+                                    </small>
+                                </p>
+                                <p class="card-text" th:if="${request.adminComment}">
+                                    <small class="text-muted">
+                                        Комментарий администратора: <span th:text="${request.adminComment}"></span>
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

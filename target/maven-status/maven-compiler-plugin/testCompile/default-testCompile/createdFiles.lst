@@ -1,0 +1,4 @@
+com\example\demo\selenium\MainPageTest.class
+com\example\demo\DemoApplicationTests.class
+com\example\demo\service\ExportServiceTest.class
+com\example\demo\service\PawnRequestServiceTest.class
